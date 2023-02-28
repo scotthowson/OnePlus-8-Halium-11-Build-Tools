@@ -1,6 +1,6 @@
-# Ubuntu Touch device tree for the One Plus 8 Instantnoodle
+# Ubuntu Touch device tree for the Xiaomi Redmi Note 7 Pro (violet)
 
-This is based on Halium 11.0, and uses the mechanism described in [this
+This is based on Halium 9.0, and uses the mechanism described in [this
 page](https://github.com/ubports/porting-notes/wiki/GitLab-CI-builds-for-devices-based-on-halium_arm64-(Halium-9)).
 
 This project can be built manually (see the instructions below) or you can
