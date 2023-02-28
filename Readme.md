@@ -10,7 +10,7 @@ This is based on Halium 11.0
 To manually build this project, follow these steps:
 
 ```bash
-sudo chmod +x build.sh
+sudo chmod +x build.sh /
 sudo chmod +x build/*
 ```
 
@@ -51,6 +51,7 @@ fastboot delete-logical-partition system_ext_b
 
 # Flash boot & system with your built boot.img & system.img.
 fastboot flash boot out/boot.img
+fastboot flash dtbo out/dtbo.img
 fastboot flash system out/system.img
 
 # Flash recovery with TWRP
