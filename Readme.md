@@ -35,7 +35,8 @@ fastboot reboot fastboot
 fastboot devices
 # If your device is listed while on stock recovery then proceed to the next steps.
 
-# If you have issues with the device connecting you can try checking devicee manager and installing the OnePlus USB drivers.
+# If you have issues with the device connecting 
+# Check device manager and installing the USB drivers.
 # https://github.com/IllSaft/OP8-USBDRV
 
 # In order to flash our system.img we need to make room for it.
@@ -50,7 +51,9 @@ fastboot flash system out/system.img
 fastoot flash recovery out/twrp-3.7.0-instantnoodle.img
 ```
 
-Wipe --> Advnaced Wipe --> ☑️Data --> Repair or Change File System --> Change File System --> EXT4 --> Swipe to Change | Head back to menu
+Wipe --> Advnaced Wipe --> ☑️Data --> Repair or Change File System --> Change File System --> EXT4 --> Swipe to Change 
+
+Head back to the menu
 
 Mount --> Data --> Mount USB Storage
 
