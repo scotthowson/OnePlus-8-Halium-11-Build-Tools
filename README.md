@@ -42,12 +42,18 @@ Mount --> Data --> Mount USB Storage
 adb push out/rootfs.img /data/
 ```
 
+Unmount Storage -- Back
+Reboot --> Fastboot
+
 ```bash
 
 fastboot create-logical-partition product_b 0x6000000
 fastoot flash product_b out/product_b.img
 fastboot create-logical-partition system_ext_b 0x6000000
 fastoot flash system_ext_b out/system_ext_b.img
+
+
+
 
 fastboot --disable-verification --disable-verity flash vbmeta vbmeta.img
 
