@@ -27,23 +27,40 @@ export HOSTCC=gcc-9  # the build breaks with gcc-11
 After the build process has successfully completed, run
 
 ```bash
+# Preparing your device.
+adb reboot fastboot
+fastboot reboot fastboot
+
+# Verify our device is in fastbootd.
+fastboot devices
+# If your device is listed while on stock recovery then proceed to the next steps.
+
+# If you have issues with the device connecting you can try checking devicee manager and installing the OnePlus USB drivers.
+# https://github.com/IllSaft/OP8-USBDRV
+
+# In order to flash our system.img we need to make room for it.
 fastboot delete-logical-partition product_b
 fastboot delete-logical-partition system_ext_b
 
+# Flash boot & system with your built boot.img & system.img.
 fastboot flash boot out/boot.img
 fastboot flash system out/system.img
 
+# Flash recovery with TWRP
 fastoot flash recovery out/twrp-3.7.0-instantnoodle.img
 ```
+
+Wipe --> Advnaced Wipe --> ☑️Data --> Repair or Change File System --> Change File System --> EXT4 --> Swipe to Change | Head back to menu
 
 Mount --> Data --> Mount USB Storage
 
 ```bash
+# Flash recovery with TWRP
 adb push out/rootfs.img /data/
 ```
 
 Unmount Storage -- Back
-Reboot --> Fastboot
+Reboot --> Fastboot --> Swipee to reboot.
 
 ```bash
 
@@ -52,13 +69,10 @@ fastoot flash product_b out/product_b.img
 fastboot create-logical-partition system_ext_b 0x6000000
 fastoot flash system_ext_b out/system_ext_b.img
 
-
-
-
+# Untested (Will verify soon)
 fastboot --disable-verification --disable-verity flash vbmeta vbmeta.img
 
 ```
-
 
 
 ## Splash screen
