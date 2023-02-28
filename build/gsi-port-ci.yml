@@ -1,0 +1,90 @@
+# This file is a shared pipeline between GSI ports. Porters can use this file by replacing
+# the port's .gitlab-ci.yml with just:
+# ---
+# include:
+#  - https://gitlab.com/ubports/porting/community-ports/halium-generic-adaptation-build-tools/-/raw/halium-11/gsi-port-ci.yml
+# ---
+# Porters may also set the variables below to alter the CI's behavior, or specify a new jobs
+# to do custom things (e.g. Volla Phone 22's bootloader-flashable super.img).
+
+variables:
+  # Branch of https://gitlab.com/ubports/porting/community-ports/halium-generic-adaptation-build-tools
+  ADAPTATION_TOOLS_BRANCH: halium-11
+  # Set to 1 to also produce devel-flashable image with Focal rootfs
+  BUILD_DEVEL_FLASHABLE_FOCAL: 0
+
+image: ubuntu:20.04
+
+build:
+  stage: build
+  script:
+    - apt update
+    - >-
+      apt install -y --no-install-recommends
+      android-tools-mkbootimg bc bison build-essential ca-certificates cpio curl
+      fakeroot flex git kmod libssl-dev libtinfo5 python-is-python2 sudo unzip wget xz-utils
+    - wget https://raw.githubusercontent.com/LineageOS/android_system_tools_mkbootimg/lineage-18.1/mkbootimg.py -O /usr/bin/mkbootimg
+    - >-
+      git clone -b $ADAPTATION_TOOLS_BRANCH
+      https://gitlab.com/ubports/porting/community-ports/halium-generic-adaptation-build-tools.git
+      build
+    - ./build/build.sh
+  artifacts:
+    paths:
+      - out/*
+
+flashable:
+  stage: deploy
+  script:
+    - apt update
+    - apt install -y git img2simg jq sudo wget xz-utils
+    - >-
+      git clone -b $ADAPTATION_TOOLS_BRANCH
+      https://gitlab.com/ubports/porting/community-ports/halium-generic-adaptation-build-tools.git
+      build
+    - DEVICE="$(source deviceinfo && echo $deviceinfo_codename)"
+    - ./build/fetch-and-prepare-latest-ota.sh "16.04/arm64/android9/devel" "$DEVICE" ota
+    - mkdir -p out
+    - ./build/system-image-from-ota.sh ota/ubuntu_command out
+  artifacts:
+    paths:
+      - out/boot.img
+      - out/system.img
+  when: manual
+
+devel-flashable:
+  stage: deploy
+  needs: [ "build" ]
+  script:
+    - apt update
+    - apt install -y git img2simg jq sudo wget xz-utils
+    - >-
+      git clone -b $ADAPTATION_TOOLS_BRANCH
+      https://gitlab.com/ubports/porting/community-ports/halium-generic-adaptation-build-tools.git
+      build
+    - DEVICE="$(source deviceinfo && echo $deviceinfo_codename)"
+    - ./build/prepare-fake-ota.sh out/device_${DEVICE}${DEV_TARBALL_VARIANT}.tar.xz ota
+    - mkdir -p out
+    - ./build/system-image-from-ota.sh ota/ubuntu_command out
+    - mv out/rootfs.img out/ubuntu.img
+  artifacts:
+    paths:
+      - out/boot.img
+      - out/ubuntu.img
+
+devel-flashable-focal:
+  extends: devel-flashable
+  variables:
+    ROOTFS_URL: "https://ci.ubports.com/job/focal-hybris-rootfs-arm64/job/master/lastSuccessfulBuild/artifact/ubuntu-touch-android9plus-rootfs-arm64.tar.gz"
+    OTA_CHANNEL: "20.04/arm64/android9plus/devel"
+    DEV_TARBALL_VARIANT: _usrmerge
+  rules:
+    # Explicitly re-specify the "default" condition. See:
+    # - https://gitlab.com/gitlab-org/gitlab/-/issues/225422
+    # - https://docs.gitlab.com/ee/ci/jobs/job_control.html#avoid-duplicate-pipelines
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      when: never
+    - if: $BUILD_DEVEL_FLASHABLE_FOCAL == "1"
+      when: on_success
+    - when: manual
+      allow_failure: true
