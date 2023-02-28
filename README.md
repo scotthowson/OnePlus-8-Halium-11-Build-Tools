@@ -55,9 +55,13 @@ fastboot flash dtbo out/dtbo.img
 fastboot flash system out/system.img
 
 # Flash recovery with TWRP
-fastoot flash recovery out/twrp-3.7.0-instantnoodle.img
+fastboot flash recovery out/twrp-3.7.0-instantnoodle.img
 ```
+Step 1.
+Volume Down --> Volume Down --> Power (English) --> Power (Advanced) --> Power (Reboot to fastboot) --> Power (Reboot to fastboot) 
+--> Volume Down --> Volume Down --> Power (Recovery Mode) | You Should now be inside TWRP, congrats! give it a minute as it takes a while.
 
+Step 2.
 Wipe --> Advnaced Wipe --> ☑️Data --> Repair or Change File System --> Change File System --> EXT4 --> Swipe to Change 
 
 Head back to the menu
@@ -69,15 +73,14 @@ Mount --> Data --> Mount USB Storage
 adb push out/rootfs.img /data/
 ```
 
-Unmount Storage -- Back
-Reboot --> Fastboot --> Swipee to reboot.
+Unmount --> Back --> Reboot --> Fastboot --> Swipe to reboot.
 
 ```bash
 
 fastboot create-logical-partition product_b 0x6000000
-fastoot flash product_b out/product_b.img
+fastboot flash product_b out/product_b.img
 fastboot create-logical-partition system_ext_b 0x6000000
-fastoot flash system_ext_b out/system_ext_b.img
+fastboot flash system_ext_b out/system_ext_b.img
 
 # Untested (Will verify soon)
 fastboot --disable-verification --disable-verity flash vbmeta vbmeta.img
