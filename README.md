@@ -58,10 +58,12 @@ fastboot flash system out/system.img
 fastboot flash recovery out/twrp-3.7.0-instantnoodle.img
 ```
 Step 1.
+
 Volume Down --> Volume Down --> Power (English) --> Power (Advanced) --> Power (Reboot to fastboot) --> Power (Reboot to fastboot) 
 --> Volume Down --> Volume Down --> Power (Recovery Mode) | You Should now be inside TWRP, congrats! give it a minute as it takes a while.
 
 Step 2.
+
 Wipe --> Advnaced Wipe --> ☑️Data --> Repair or Change File System --> Change File System --> EXT4 --> Swipe to Change 
 
 Head back to the menu
