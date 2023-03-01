@@ -10,8 +10,7 @@ This is based on Halium 11.0
 To manually build this project, follow these steps:
 
 ```bash
-sudo chmod +x build.sh /
-sudo chmod +x build/*
+sudo chmod +x build.sh && sudo chmod +x build/*
 ```
 
 ```bash
