@@ -9,7 +9,7 @@ deviceinfo_kernel_cmdline="androidboot.hardware=qcom androidboot.console=ttyMSM0
 deviceinfo_kernel_clang_compile="true"
 deviceinfo_kernel_apply_overlay="false"
 deviceinfo_dtb="vendor/qcom/kona.dtb vendor/qcom/kona-v2.dtb vendor/qcom/kona-v2.1.dtb"
-deviceinfo_dtbo="vendor/qcom/kona-mtp-overlay.dtbo"
+deviceinfo_dtbo="vendor/qcom/kebab-overlay.dtbo"
 deviceinfo_generate_bootimg="true"
 deviceinfo_bootimg_qcdt="false"
 deviceinfo_kernel_use_dtc_ext="true"
