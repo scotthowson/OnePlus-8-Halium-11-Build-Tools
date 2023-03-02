@@ -2,18 +2,18 @@
 
 This is based on Halium 11.0
 
-[Setting](#Setting up your build device) section.
+[Setting up your build device](#Setting) section.
+
+[How to build](#How) section.
 
 [Install](#install) section.
 
-
-[How](#How to build) section.
+[Splash screen](#Splash) section.
 
 
 ## Setting up your build device
 
 Ubuntu (20.04 or newer)
-
 
 If you are on the amd64 architecture (commonly referred to as 64 bit), enable the usage of the i386 architecture:
 
@@ -99,8 +99,10 @@ fastboot flash system out/system.img
 # Flash recovery with TWRP
 fastboot flash recovery out/twrp-3.7.0-instantnoodle.img
 ```
+<ol>
+<li>
 Step 1.
-
+</li>
 Volume Down --> Volume Down --> Power (English) --> Power (Advanced) --> Power (Reboot to fastboot) --> Power (Reboot to fastboot) 
 --> Volume Down --> Volume Down --> Power (Recovery Mode) | You Should now be inside TWRP, congrats! give it a minute as it takes a while.
 
@@ -111,6 +113,7 @@ Wipe --> Advnaced Wipe --> ☑️Data --> Repair or Change File System --> Chang
 Head back to the menu
 
 Mount --> Data --> Mount USB Storage
+<ol>
 
 ```bash
 # Flash recovery with TWRP
