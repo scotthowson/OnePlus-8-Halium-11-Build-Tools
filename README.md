@@ -2,13 +2,13 @@
 
 This is based on Halium 11.0
 
-[Setting up your build device](#Setting up your build device) section.
+[Setting up your build device](#setting-up-your-build-device) section.
 
-[How to build](#How to build) section.
+[How to build](#How-to-build) section.
 
 [Install](#install) section.
 
-[Splash screen](#Splash) section.
+[Splash Screen](#Splash-screen) section.
 
 
 ## Setting up your build device
@@ -66,10 +66,7 @@ sudo ./build/system-image-from-ota.sh ota/ubuntu_command out
 ```
 
 
-
-
 ## Install
-
 
 After the build process has successfully completed, run
 
@@ -99,10 +96,9 @@ fastboot flash system out/system.img
 # Flash recovery with TWRP
 fastboot flash recovery out/twrp-3.7.0-instantnoodle.img
 ```
-<ol>
-<li>
+
 Step 1.
-</li>
+
 Volume Down --> Volume Down --> Power (English) --> Power (Advanced) --> Power (Reboot to fastboot) --> Power (Reboot to fastboot) 
 --> Volume Down --> Volume Down --> Power (Recovery Mode) | You Should now be inside TWRP, congrats! give it a minute as it takes a while.
 
@@ -113,7 +109,6 @@ Wipe --> Advnaced Wipe --> ☑️Data --> Repair or Change File System --> Chang
 Head back to the menu
 
 Mount --> Data --> Mount USB Storage
-<ol>
 
 ```bash
 # Flash recovery with TWRP
