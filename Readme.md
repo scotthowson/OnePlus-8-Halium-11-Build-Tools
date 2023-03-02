@@ -2,7 +2,50 @@
 
 This is based on Halium 11.0
 
+[Setting up your build device](#Setting up your build device) section.
+
 [Install](#install) section.
+
+
+[How to build](#How to build) section.
+
+
+## Setting up your build device
+
+Ubuntu (20.04 or newer)
+
+
+If you are on the amd64 architecture (commonly referred to as 64 bit), enable the usage of the i386 architecture:
+
+```bash
+sudo dpkg --add-architecture i386
+```
+
+Update your package lists to take advantage of the new architecture:
+
+```bash
+sudo apt update
+```
+
+Install the required dependencies:
+
+```bash
+sudo apt install git gnupg flex bison gperf build-essential \
+  zip bzr curl libc6-dev libncurses5-dev:i386 x11proto-core-dev \
+  libx11-dev:i386 libreadline6-dev:i386 libgl1-mesa-glx:i386 \
+  libgl1-mesa-dev g++-multilib mingw-w64-i686-dev tofrodos \
+  python-markdown libxml2-utils xsltproc zlib1g-dev:i386 schedtool \
+  liblz4-tool bc lzop imagemagick libncurses5 rsync \
+  python-is-python3
+```
+
+Run the following commands to download the repo script and ensure it is executable:
+
+```bash
+curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
+chmod a+rx ~/bin/repo
+```
+
 
 
 ## How to build
