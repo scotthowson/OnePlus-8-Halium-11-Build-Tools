@@ -2,9 +2,9 @@
 
 This is based on Halium 11.0
 
-[Setting up your build device](#Setting) section.
+[Setting up your build device](#Setting up your build device) section.
 
-[How to build](#How) section.
+[How to build](#How to build) section.
 
 [Install](#install) section.
 
