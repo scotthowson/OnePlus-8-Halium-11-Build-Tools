@@ -42,11 +42,13 @@ fi
 ls "$OUT/arch/$ARCH/boot/"*Image*
 
 if [ -n "$deviceinfo_kernel_apply_overlay" ] && $deviceinfo_kernel_apply_overlay; then
-    ${TMPDOWN}/ufdt_apply_overlay "$OUT/arch/arm64/boot/dts/qcom/${deviceinfo_kernel_appended_dtb}.dtb" \
-        "$OUT/arch/arm64/boot/dts/qcom/${deviceinfo_kernel_dtb_overlay}.dtbo" \
-        "$OUT/arch/arm64/boot/dts/qcom/${deviceinfo_kernel_dtb_overlay}-merged.dtb"
-    cat "$OUT/arch/$ARCH/boot/Image.gz" \
-        "$OUT/arch/arm64/boot/dts/qcom/${deviceinfo_kernel_dtb_overlay}-merged.dtb" > "$OUT/arch/$ARCH/boot/Image.gz-dtb"
+    ${TMPDOWN}/ufdt_apply_overlay "$OUT/arch/arm64/boot/dts/vendor/qcom/kona.dtb" \
+        "$OUT/arch/arm64/boot/dts/vendor/qcom/kona-v2.1.dtb" \
+        "$OUT/arch/arm64/boot/dts/vendor/qcom/kona-v2.dtb" \
+        "$OUT/arch/arm64/boot/dts/vendor/qcom/instantnoodle-overlay-dvt.dtbo" \
+        "$OUT/arch/arm64/boot/dts/vendor/qcom/instantnoodle-overlay-evt1.dtbo" \
+        "$OUT/arch/arm64/boot/dts/vendor/qcom/instantnoodle-overlay-t0.dtbo" \
+    cat "$OUT/arch/$ARCH/boot/Image.gz" > "$OUT/arch/$ARCH/boot/Image.gz-dtb"
 fi
 
 if [ -n "$deviceinfo_use_overlaystore" ]; then

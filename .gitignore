@@ -1,1 +1,15 @@
 ota
+instantnoodle
+bd
+bd-19.1
+bd-18.1
+UBF
+out/dtbo.img
+out/rootfs.img
+out/system.img
+out/boot.img
+out/savee
+out/device_instantnoodle_usrmerge.tar.build
+out/device_instantnoodle_usrmerge.tar.xz
+out/device_instantnoodle.tar.xz
+out/device_instantnoodle.tar.build
