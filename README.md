@@ -85,10 +85,10 @@ to build the system image with Halium:
     git clone https://gitlab.com/ubuntu-touch-xiaomi-violet/fm-bridge.git vendor/ubports/fm-bridge
 ```
 4. Apply hybris patches: `hybris-patches/apply-patches.sh --mb`
-5. `source build/envsetup.sh && breakfast violet`
+5. `source build/envsetup.sh && breakfast instantnoodle`
 6. `mka vendorimage`
 
-This will generate a file `our/target/product/violet/vendor.img` that can be
+This will generate a file `out/target/product/instantnoodle/vendor.img` that can be
 flashed with `fastboot flash vendor vendor.img`.
 
 
