@@ -74,7 +74,7 @@ The vendor image is available as a downloadable blob
 If you'd like to build it yourself, the steps are quite similar to those needed
 to build the system image with Halium:
 
-1. Initialize the repo: `repo init -u https://github.com/Halium/android -b halium-9.0 --depth=1`
+1. Initialize the repo: `repo init -u https://github.com/Halium/android -b halium-11.0 --depth=1`
 2. `repo sync`
 3. Until [this PR](https://github.com/Halium/halium-devices/pull/325) is not
    merged, you'll have to download the
