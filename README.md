@@ -123,8 +123,8 @@ fastboot devices
 # https://github.com/IllSaft/OP8-USBDRV
 
 # In order to flash our system.img we need to make room for it.
-fastboot delete-logical-partition product_b
-fastboot delete-logical-partition system_ext_b
+fastboot delete-logical-partition product_a
+fastboot delete-logical-partition system_ext_a
 
 # Flash boot & system with your built boot.img & system.img.
 fastboot flash boot out/boot.img
