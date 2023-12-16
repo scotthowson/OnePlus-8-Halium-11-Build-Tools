@@ -130,6 +130,7 @@ fastboot delete-logical-partition system_ext_a
 fastboot flash boot out/boot.img
 fastboot flash dtbo out/dtbo.img
 fastboot flash system out/system.img
+flash vbmeta --disable-verity --disable-verification vbmeta /path/to/vbmeta.img
 
 # Flash recovery with TWRP
 fastboot flash recovery out/twrp-3.7.0-instantnoodle.img
