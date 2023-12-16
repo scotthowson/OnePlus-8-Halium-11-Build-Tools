@@ -60,8 +60,8 @@ sudo chmod +x build.sh && sudo chmod +x build/*
 ```bash
 export HOSTCC=gcc-9  # the build breaks with gcc-11
 sudo ./build.sh -b instantnoodle  # instantnoodle is the name of the build directory
-sudo ./build/prepare-fake-ota.sh instantnoodle/device_instantnoodle.tar.xz ota 
-sudo ./build/system-image-from-ota.sh ota/ubuntu_command instantnoodle
+sudo ./build/prepare-fake-ota.sh out/device_instantnoodle.tar.xz ota 
+sudo ./build/system-image-from-ota.sh ota/ubuntu_command out
 
 # If built successfully your system imgs will be in 'out/'
 ```
